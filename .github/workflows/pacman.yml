@@ -1,25 +1,20 @@
 name: Generate Pacman Contribution Graph
-
 on:
   schedule:
     - cron: "0 */12 * * *"
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   generate:
     runs-on: ubuntu-latest
-
     steps:
       - name: Generate Pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: Datn175
-
       - name: Push generated files
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: pacman-output
